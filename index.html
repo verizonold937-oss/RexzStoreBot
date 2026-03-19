@@ -5,121 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Selamat Hari Raya</title>
 <style>
-/* Reset */
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins','Segoe UI',sans-serif;overflow:hidden;position:relative;}
 
-/* Body */
-body {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
-    overflow-x: hidden;
-    position: relative;
+/* Preloader full screen */
+#preloader{
+  position:fixed;top:0;left:0;width:100vw;height:100vh;
+  background: linear-gradient(135deg,#fef9e7,#e0f7fa);
+  display:flex;justify-content:center;align-items:center;flex-direction:column;
+  z-index:9999;
+  transition: opacity 1s ease;
 }
+#preloader.hidden{opacity:0;visibility:hidden;}
 
-/* Preloader */
-#preloader {
-    position: fixed;
-    top:0; left:0;
-    width:100vw; height:100vh;
-    background: linear-gradient(135deg, #fef9e7, #e0f7fa);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction: column;
-    z-index: 9999;
-    transition: opacity 0.8s ease;
+/* Preloader ketupat berputar */
+.pre-ketupat{
+  width:80px;height:80px;
+  background:linear-gradient(135deg,#27ae60,#2ecc71);
+  transform:rotate(45deg);
+  border-radius:5px;
+  animation: rotatePre 2s linear infinite;
+  box-shadow:0 0 20px #2ecc71,0 0 40px #27ae60 inset;
+  margin-bottom:20px;
 }
-#preloader.hidden { opacity:0; visibility:hidden; }
+@keyframes rotatePre{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 
-/* Loading text */
-#preloader h2 {
-    font-size: 2rem;
-    color: #27ae60;
-    text-shadow: 0 0 10px #f1c40f, 0 0 20px #f39c12;
-    animation: glowTitle 2s ease-in-out infinite alternate;
-}
-@keyframes glowTitle {
-    from { text-shadow: 0 0 10px #f1c40f, 0 0 20px #f39c12; }
-    to { text-shadow: 0 0 20px #f1c40f, 0 0 40px #f39c12; }
-}
-
-/* Spinner */
-.spinner {
-    margin-top: 20px;
-    width:50px; height:50px;
-    border:5px solid #f3f3f3;
-    border-top:5px solid #27ae60;
-    border-radius:50%;
-    animation: spin 1s linear infinite;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg);}
-    100% { transform: rotate(360deg);}
-}
+#preloader h2{color:#27ae60;text-align:center;text-shadow:0 0 10px #f1c40f,0 0 20px #f39c12; animation: glowTitle 2s ease-in-out infinite alternate; margin-bottom:10px;}
+@keyframes glowTitle{0%{text-shadow:0 0 10px #f1c40f,0 0 20px #f39c12;}50%{text-shadow:0 0 20px #f1c40f,0 0 40px #f39c12;}100%{text-shadow:0 0 10px #f1c40f,0 0 20px #f39c12;}}
 
 /* Main content */
-#mainContent { display:none; }
-
-/* Background gradient main */
-body.main-active {
-    animation: gradientBG 15s ease infinite;
-    background-size: 400% 400%;
-}
-@keyframes gradientBG {
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
+#mainContent{display:none;}
+body.main-active{animation:gradientBG 15s ease infinite; background-size:400% 400%;}
+@keyframes gradientBG{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 
 /* Judul glow */
-h1 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #27ae60;
-    text-shadow: 0 0 10px #f1c40f, 0 0 20px #f39c12;
-    animation: glowTitle 2s ease-in-out infinite alternate;
-}
+h1{font-size:2.5rem;margin-bottom:30px;text-transform:uppercase;letter-spacing:2px;color:#27ae60;text-shadow:0 0 10px #f1c40f,0 0 20px #f39c12;animation:glowTitle 2s ease-in-out infinite alternate;}
 
-/* Ketupat diam */
-.ketupat-wrap { display:flex; justify-content:center; gap:40px; margin:40px 0; }
-.ketupat { width:70px; height:70px; background: linear-gradient(135deg,#27ae60,#2ecc71); transform: rotate(45deg); box-shadow: 0 0 20px #2ecc71,0 0 40px #27ae60 inset; border-radius:5px; animation: swing 3s ease-in-out infinite alternate;}
-@keyframes swing {0%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(-10px);}100%{transform:rotate(45deg) translateY(0);}}
+/* Ketupat diam+putar */
+.ketupat-wrap{display:flex;justify-content:center;gap:40px;margin:40px 0;}
+.ketupat{width:70px;height:70px;background:linear-gradient(135deg,#27ae60,#2ecc71);transform:rotate(45deg);border-radius:5px;animation:rotateMain 4s linear infinite;}
+@keyframes rotateMain{0%{transform:rotate(0deg) rotate(45deg);}100%{transform:rotate(360deg) rotate(45deg);}}
 
-/* Lampu */
-.lampu { position:absolute; width:12px; height:12px; background:gold; border-radius:50%; opacity:0.8; animation: blink 1.5s ease-in-out infinite alternate;}
-@keyframes blink {0%{opacity:0.2; transform: scale(0.5);}50%{opacity:1; transform: scale(1.2);}100%{opacity:0.2; transform: scale(0.5);}}
+.lampu{position:absolute;width:12px;height:12px;background:gold;border-radius:50%;opacity:0.8;animation:blink 1.5s ease-in-out infinite alternate;}
+@keyframes blink{0%{opacity:0.2;transform:scale(0.5);}50%{opacity:1;transform:scale(1.2);}100%{opacity:0.2;transform:scale(0.5);}}
 
-/* Sparkle */
-.sparkle { position:absolute; width:6px; height:6px; background:gold; border-radius:50%; opacity:0.8; animation: sparkle 2s linear infinite;}
-@keyframes sparkle {0%{transform:translateY(0) scale(1); opacity:0.8;}50%{transform:translateY(-10px) scale(1.5); opacity:1;}100%{transform:translateY(0) scale(1); opacity:0.8;}}
+.sparkle{position:absolute;width:6px;height:6px;background:gold;border-radius:50%;opacity:0.8;animation:sparkle 2s linear infinite;}
+@keyframes sparkle{0%{transform:translateY(0) scale(1);opacity:0.8;}50%{transform:translateY(-10px) scale(1.5);opacity:1;}100%{transform:translateY(0) scale(1);opacity:0.8;}}
 
-/* Confetti */
-.confetti { position:fixed; width:10px; height:10px; top:-10px; opacity:0.8; transform:rotate(45deg); animation: fall 5s linear infinite; }
-@keyframes fall {0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(110vh) rotate(360deg);}}
+.confetti{position:fixed;width:10px;height:10px;top:-10px;opacity:0.8;transform:rotate(45deg);animation:fall 5s linear infinite;}
+@keyframes fall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(110vh) rotate(360deg);}}
 
-p { margin:15px 0; font-size:1.1rem; }
-.emphasize { color:#f39c12; font-weight:bold; text-shadow:0 0 5px #f1c40f; }
-.footer { margin-top:50px; font-size:0.9rem; color:#555; }
-.online-btn { display:inline-block; padding:10px 20px; background:#27ae60; color:#fff; text-decoration:none; font-weight:bold; border-radius:5px; margin-top:20px; box-shadow:0 0 10px #2ecc71; transition:0.3s;}
-.online-btn:hover { background:#2ecc71; box-shadow:0 0 20px #27ae60;}
+p{margin:15px 0;font-size:1.1rem;}
+.emphasize{color:#f39c12;font-weight:bold;text-shadow:0 0 5px #f1c40f;}
+.footer{margin-top:50px;font-size:0.9rem;color:#555;}
+.online-btn{display:inline-block;padding:10px 20px;background:#27ae60;color:#fff;text-decoration:none;font-weight:bold;border-radius:5px;margin-top:20px;box-shadow:0 0 10px #2ecc71;transition:0.3s;}
+.online-btn:hover{background:#2ecc71;box-shadow:0 0 20px #27ae60;}
 </style>
 </head>
 <body>
 
 <!-- Preloader -->
 <div id="preloader">
-    <h2>Idul Fitri 1446 H<br>Asset by REXZ<br>Please wait...</h2>
-    <div class="spinner"></div>
+  <div class="pre-ketupat"></div>
+  <h2>Idul Fitri 1446 H<br>Asset by REXZ<br>Please wait...</h2>
+  <div class="spinner" style="border:5px solid #f3f3f3;border-top:5px solid #27ae60;border-radius:50%;width:50px;height:50px;animation:spin 1s linear infinite;"></div>
 </div>
 
 <!-- Main content -->
 <div id="mainContent">
 <h1>Selamat Hari Raya Idul Fitri 1446 H</h1>
 <div class="ketupat-wrap">
-    <div class="ketupat"></div>
-    <div class="ketupat"></div>
-    <div class="ketupat"></div>
+  <div class="ketupat"></div>
+  <div class="ketupat"></div>
+  <div class="ketupat"></div>
 </div>
 
 <p class="emphasize">تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ</p>
@@ -150,35 +108,39 @@ Semoga hari yang fitri ini membawa berkah & kebahagiaan.</p>
 <div class="lampu" style="top:300px; left:50%;"></div>
 </div>
 
-<!-- Confetti + Script -->
+<audio id="themeAudio" loop>
+  <source src="https://assets.mixkit.co/music/preview/mixkit-festive-music-72.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 // Confetti
 for(let i=0;i<40;i++){
-    const conf = document.createElement('div');
-    conf.classList.add('confetti');
-    conf.style.left = Math.random()*100 + 'vw';
-    conf.style.backgroundColor = `hsl(${Math.random()*360},80%,50%)`;
-    conf.style.animationDuration = 3 + Math.random()*3 + 's';
-    document.body.appendChild(conf);
+  const conf=document.createElement('div');
+  conf.classList.add('confetti');
+  conf.style.left=Math.random()*100+'vw';
+  conf.style.backgroundColor=`hsl(${Math.random()*360},80%,50%)`;
+  conf.style.animationDuration=3+Math.random()*3+'s';
+  document.body.appendChild(conf);
 }
 
 // Status online/offline
-const statusContainer = document.getElementById('statusContainer');
-const isOnline = true; // ganti false jika offline
+const statusContainer=document.getElementById('statusContainer');
+const isOnline=true;
 if(isOnline){
-    statusContainer.innerHTML = `<a href="https://saweria.co/RexzCihuy" class="online-btn" target="_blank">💚 Online: Klik untuk THR</a>`;
+  statusContainer.innerHTML=`<a href="https://saweria.co/RexzCihuy" class="online-btn" target="_blank">💚 Online: Klik untuk THR</a>`;
 }else{
-    statusContainer.innerHTML = `<p style="color:red; font-weight:bold;">🔴 Offline</p>`;
+  statusContainer.innerHTML=`<p style="color:red;font-weight:bold;">🔴 Offline</p>`;
 }
 
-// Preloader fade out
-window.addEventListener('load', ()=>{
-    setTimeout(()=>{
-        const preloader = document.getElementById('preloader');
-        preloader.classList.add('hidden');
-        document.getElementById('mainContent').style.display='block';
-        document.body.classList.add('main-active');
-    }, 3000); // 3 detik preloader
+// Preloader fade out + main content
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    const pre=document.getElementById('preloader');
+    pre.classList.add('hidden');
+    document.getElementById('mainContent').style.display='block';
+    document.body.classList.add('main-active');
+    document.getElementById('themeAudio').play();
+  },3000);
 });
 </script>
 
