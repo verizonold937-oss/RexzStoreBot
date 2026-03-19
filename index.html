@@ -5,17 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Selamat Hari Raya</title>
 <style>
-    body {
-        font-family: monospace;
-        background-color: #fff8e7;
-        color: #2c3e50;
-        text-align: center;
-        padding: 20px;
-    }
-    .ketupat {
-        line-height: 0.8em;
-        margin: 20px 0;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: #fff8e7;
+    color: #2c3e50;
+    text-align: center;
+    padding: 20px;
+}
+
+h1, h2 {
+    margin: 10px 0;
+}
+
+.ketupat-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.ketupat {
+    width: 50px;
+    height: 50px;
+    background: #27ae60;
+    transform: rotate(45deg);
+    animation: sparkle 1.5s infinite alternate;
+    position: relative;
+}
+
+/* efek garis pinggir ketupat */
+.ketupat::before, .ketupat::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #2ecc71;
+    transform: rotate(0deg);
+    top: 0;
+    left: 0;
+}
+
+@keyframes sparkle {
+    0% { transform: rotate(45deg) scale(1); opacity: 1; }
+    50% { transform: rotate(45deg) scale(1.2); opacity: 0.7; }
+    100% { transform: rotate(45deg) scale(1); opacity: 1; }
+}
+
+p {
+    max-width: 600px;
+    margin: 15px auto;
+    line-height: 1.5;
+}
 </style>
 </head>
 <body>
@@ -23,21 +63,18 @@
 <h1>☪️ SELAMAT HARI RAYA ☪️</h1>
 <h2>IDUL FITRI 1446 H</h2>
 
-<div class="ketupat">
-<pre>
-   ╱╲       ╱╲       ╱╲
-  ╱  ╲     ╱  ╲     ╱  ╲
- ╱    ╲   ╱    ╲   ╱    ╲
- ╲    ╱   ╲    ╱   ╲    ╱
-  ╲  ╱     ╲  ╱     ╲  ╱
-   ╲╱       ╲╱       ╲╱
-</pre>
+<div class="ketupat-container">
+    <div class="ketupat"></div>
+    <div class="ketupat"></div>
+    <div class="ketupat"></div>
 </div>
 
 <p>تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ</p>
 <p>"Taqabalallahu minna wa minkum"</p>
 
 <p>✨ MOHON MAAF LAHIR DAN BATIN ✨</p>
+
+<p>Di hari yang suci ini, kami sekeluarga mengucapkan:</p>
 <p>🌙 Selamat Hari Raya Idul Fitri 1446 H<br>
 ☀️ Minal Aidin Wal Faizin</p>
 
@@ -49,24 +86,8 @@ Kami mohon bukakan pintu maaf yang sebesar-besarnya.<br>
 Semoga di hari yang fitri ini, kita semua kembali suci<br>
 dan diberkahi kebahagiaan oleh Allah SWT.</p>
 
-<div class="ketupat">
-<pre>
-   ╱╲       ╱╲       ╱╲
-  ╱  ╲     ╱  ╲     ╱  ╲
- ╱    ╲   ╱    ╲   ╱    ╲
- ╲    ╱   ╲    ╱   ╲    ╱
-  ╲  ╱     ╲  ╱     ╲  ╱
-   ╲╱       ╲╱       ╲╱
-</pre>
-</div>
-
-<p>🌟 REXZ HUB 🌟</p>
-<p>1 Syawal 1446 H / 2025 M</p>
-
-<p>© 2025 Rexz Hub. All Rights Reserved.<br>
-Dibuat dengan ❤️ untuk menyambut hari kemenangan</p>
-<p>Ikuti kami di WhatsApp Channel:<br>
-<a href="https://whatsapp.com/channel/0029VbCGqNi6GcGNHfses407" target="_blank">https://whatsapp.com/channel/0029VbCGqNi6GcGNHfses407</a></p>
+<p>🌟 REXZ HUB 🌟<br>
+1 Syawal 1446 H / 2025 M</p>
 
 </body>
 </html>
